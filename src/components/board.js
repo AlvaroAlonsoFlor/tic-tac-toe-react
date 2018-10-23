@@ -1,7 +1,6 @@
 
 import React from 'react';
 import {Square} from './square.js';
-// const Square = require('./square.js');
 
 class Board extends React.Component {
 
@@ -89,5 +88,4 @@ function calculateWinner(squares) {
   return null;
 }
 
-export {Board, calculateWinner};
-// export default Board;
+export {Board};
