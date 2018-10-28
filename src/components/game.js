@@ -1,5 +1,5 @@
 import React from 'react';
-import {Board, calculateWinner} from './board.js';
+import {Board} from './board.js';
 
 class Game extends React.Component {
   constructor(props) {
@@ -42,9 +42,9 @@ class Game extends React.Component {
   }
 
   handleClick(i) {
-    const squares = this.state.squares.slice();
     const history = this.state.history;
     const current = history[history.length - 1];
+    const squares = current.squares.slice();
 
     
     if (calculateWinner(squares) || squares[i]) {
@@ -59,6 +59,26 @@ class Game extends React.Component {
       xIsNext: !this.state.xIsNext
     });
   }
+}
+
+function calculateWinner(squares) {
+  const winningLines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < winningLines.length; i++) {
+    const [a, b, c] = winningLines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
 }
 
 export {Game};
