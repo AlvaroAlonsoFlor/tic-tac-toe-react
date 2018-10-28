@@ -19,10 +19,22 @@ class Game extends React.Component {
 
     let status;
     if(winner) {
-      status = `The winner is ${winner}`
+      status = `The winner is ${winner}`;
     } else {
-      status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`
+      status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
     }
+
+    const moves = history.map((step, move) => {
+      const previousMovement = move ? `Go to move ${move}` : 'Go to game start';
+      return (
+        //using step wouldn't be safe because we are editing our list
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>
+            {previousMovement}
+          </button>
+        </li>
+      )
+    })
 
 
     return (
@@ -35,7 +47,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{/* TODO */}</ol>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
