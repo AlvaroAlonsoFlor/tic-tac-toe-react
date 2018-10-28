@@ -20,7 +20,18 @@ class Game extends React.Component {
 
     
     let status = this.returnStatus(winner)
-    const moves = this.returnMoves(history)
+    const moves = history.map((step, move) => {
+      const previousMovement = move ? `Go to move ${move}` : 'Go to game start';
+      console.log(history)
+      console.log('move', move, step)
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>
+            {previousMovement}
+          </button>
+        </li>
+      )
+    });
 
 
     return (
@@ -74,18 +85,21 @@ class Game extends React.Component {
     return `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
   }
 
-  returnMoves(history) {
-    const moves = history.map((step, move) => {
-      const previousMovement = move ? `Go to move ${move}` : 'Go to game start';
-      return (
-        //using step wouldn't be safe because we are editing our list
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>
-            {previousMovement}
-          </button>
-        </li>
-      )
-  }
+  // It returns undefined if I convert it into a helper function
+  // returnMoves(history) {
+  //   history.map((step, move) => {
+  //     const previousMovement = move ? `Go to move ${move}` : 'Go to game start';
+  //     console.log(history)
+  //     console.log('move', move, step)
+  //     return (
+  //       <li key={move}>
+  //         <button onClick={() => this.jumpTo(move)}>
+  //           {previousMovement}
+  //         </button>
+  //       </li>
+  //     )
+  //   });
+  // }
 }
 
 
