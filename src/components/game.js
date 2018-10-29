@@ -19,19 +19,8 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     
-    let status = this.returnStatus(winner)
-    const moves = history.map((step, move) => {
-      const previousMovement = move ? `Go to move ${move}` : 'Go to game start';
-      console.log(history)
-      console.log('move', move, step)
-      return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>
-            {previousMovement}
-          </button>
-        </li>
-      )
-    });
+    let status = this.returnStatus(winner);
+    const moves = this.returnMoves(history);
 
 
     return (
@@ -86,20 +75,20 @@ class Game extends React.Component {
   }
 
   // It returns undefined if I convert it into a helper function
-  // returnMoves(history) {
-  //   history.map((step, move) => {
-  //     const previousMovement = move ? `Go to move ${move}` : 'Go to game start';
-  //     console.log(history)
-  //     console.log('move', move, step)
-  //     return (
-  //       <li key={move}>
-  //         <button onClick={() => this.jumpTo(move)}>
-  //           {previousMovement}
-  //         </button>
-  //       </li>
-  //     )
-  //   });
-  // }
+  returnMoves(history) {
+    return history.map((step, move) => {
+      const previousMovement = move ? `Go to move ${move}` : 'Go to game start';
+      console.log(history)
+      console.log('move', move, step)
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>
+            {previousMovement}
+          </button>
+        </li>
+      )
+    });
+  }
 }
 
 
