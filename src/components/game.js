@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Board} from './board.js';
 
-class Game extends React.Component {
+class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
       history: [{
-        grid: Array(3).fill(Array(3).fill(null)),
+        grid: Array(3).fill(Array(3).fill('empty')),
       }],
       stepNumber: 0,
       xIsNext: true
@@ -23,9 +23,7 @@ class Game extends React.Component {
     // const moves = this.returnMoves(history);
 
     return (
-      <div className="game-board">
-        Here goes the board
-      </div>
+        <Board gameState={current}/>  
     );
 
 
