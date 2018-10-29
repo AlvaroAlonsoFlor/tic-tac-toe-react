@@ -15,9 +15,14 @@ class Board extends Component {
 
   render() {
 
+    const rows = this.props.gameState.grid.map((row) => {
+      return(<h3>Is a row!</h3>);
+    })
+
     return(
       <div className = "game-board">
         Here goes the board
+        {rows}
       </div>
       
     );
