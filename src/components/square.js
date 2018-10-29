@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Square = function (props) {
-  return(
-    <button className="square" onClick={props.onClick}>
-      {props.value}
-    </button>
-  )
-};
+// const Square = function (props) {
+//   return(
+//     <button className="square" onClick={props.onClick}>
+//       {props.value}
+//     </button>
+//   )
+// };
 
-export {Square};
+export default class Square extends Component {
+  
+  render() {
+    return(
+      <button>
+        'squeeero'
+      </button>
+      
+      );
+  }
+}

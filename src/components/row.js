@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Square from './square';
 
 export default class Row extends Component {
 
@@ -7,7 +8,7 @@ export default class Row extends Component {
     render() {
 
         const squares = this.props.row.map(() => {
-            return(<h4>I am a square</h4>)
+            return(<Square />)
         })
 
         return(
