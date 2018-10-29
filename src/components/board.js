@@ -1,6 +1,6 @@
 
-import React, {Component, Fragment} from 'react';
-import {Square} from './square.js';
+import React, {Component} from 'react';
+import Row from './row.js';
 
 class Board extends Component {
 
@@ -15,8 +15,8 @@ class Board extends Component {
 
   render() {
 
-    const rows = this.props.gameState.grid.map((row) => {
-      return(<h3>Is a row!</h3>);
+    const rows = this.props.gameState.grid.map((row, step) => {
+      return(<Row key={step} row={row}/>);
     })
 
     return(
